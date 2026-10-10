@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,8 @@ public class LoginPage extends BasePage {
 
     @FindBy(id = "login-button")
     private WebElement loginButton;
+    
+    private By errorMessage = By.cssSelector("[data-test='error']");
 
     public LoginPage(WebDriver driver) {
 
@@ -51,5 +54,13 @@ public class LoginPage extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickLogin();
+    }
+    
+    public boolean isErrorMessageDisplayed() {
+        return isDisplayed(errorMessage);
+    }
+    
+    public String getErrorMessage() {
+        return getText(errorMessage);
     }
 }

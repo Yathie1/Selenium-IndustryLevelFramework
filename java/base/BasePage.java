@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.ConfigReader;
+
 public class BasePage {
 
     protected WebDriver driver;
@@ -17,7 +19,14 @@ public class BasePage {
     // Constructor
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(
+        	    driver,
+        	    Duration.ofSeconds(
+        	        Long.parseLong(
+        	            ConfigReader.getProperty("explicitWait")
+        	        )
+        	    )
+        	);
     }
 
     // =========================================================

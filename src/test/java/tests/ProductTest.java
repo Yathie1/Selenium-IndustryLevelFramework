@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class ProductTest {
 
-    @Test
+    @Test(groups = "smoke")
     public void verifyProductPage() {
         System.out.println("Product test executed");
     }
